@@ -13,26 +13,25 @@ public class PushPullWebSocketServer extends WebSocketServer {
     private static final Logger log = LoggerFactory.getLogger(PushPullWebSocketServer.class);
     public PushPullWebSocketServer(int port) {
         super(new InetSocketAddress(port));
+        setDaemon(false);
     }
 
     @Override
     public void onOpen(WebSocket webSocket, ClientHandshake clientHandshake) {
-
+        log.info("New connection opened");
     }
 
     @Override
     public void onClose(WebSocket webSocket, int i, String s, boolean b) {
-
+        log.info("Connection closed");
     }
 
     @Override
     public void onMessage(WebSocket webSocket, String s) {
         if (s.toLowerCase().startsWith("subscribe")) {
             log.info("subscribe message received");
-            String randomString = generateRandomString();
-            log.info("Generated random string: {}", randomString);
+//            log.info("Generated random string: {}", randomString);
         }
-
     }
 
     @Override
@@ -45,14 +44,4 @@ public class PushPullWebSocketServer extends WebSocketServer {
 
     }
 
-    private String generateRandomString() {
-        int length = 10;
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        StringBuilder randomString = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            int index = (int) (Math.random() * characters.length());
-            randomString.append(characters.charAt(index));
-        }
-        return randomString.toString();
-    }
 }
