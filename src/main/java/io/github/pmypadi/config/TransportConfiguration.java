@@ -1,6 +1,7 @@
 package io.github.pmypadi.config;
 
 import io.github.pmypadi.transport.PushPullWebSocketServer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +9,9 @@ import org.springframework.context.annotation.Configuration;
 public class TransportConfiguration {
 
     @Bean
-    public PushPullWebSocketServer pushPullWebSocketServer(int port) {
-        return new PushPullWebSocketServer(port);
+    public PushPullWebSocketServer pushPullWebSocketServer() {
+        var server = new PushPullWebSocketServer(8399);
+        server.start();
+        return server;
     }
 }
