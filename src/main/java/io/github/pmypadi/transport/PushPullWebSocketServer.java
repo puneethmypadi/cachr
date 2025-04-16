@@ -1,14 +1,16 @@
 package io.github.pmypadi.transport;
 
-import lombok.extern.slf4j.Slf4j;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
 
-@Slf4j
 public class PushPullWebSocketServer extends WebSocketServer {
+
+    private static final Logger log = LoggerFactory.getLogger(PushPullWebSocketServer.class);
     public PushPullWebSocketServer(int port) {
         super(new InetSocketAddress(port));
     }
