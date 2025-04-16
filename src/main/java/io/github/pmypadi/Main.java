@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         log.info("Starting PushPullWebSocketServer");
         ApplicationContext ctx = new AnnotationConfigApplicationContext(Main.class);
         log.info("PushPullWebSocketServer started");
